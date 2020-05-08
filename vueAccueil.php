@@ -1,37 +1,16 @@
-<!doctype html>
-<html lang="fr">
+<?php $titre = 'Mon Blog'; ?>
 
-<head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Mon Blog</title>
-</head>
-
-<body>
+<?php ob_start(); ?>
+<?php foreach ($billets as $billet): ?>
+  <article>
     <header>
-        <a href="index.php">
-            <h1 id="titreBlog">Mon Blog</h1>
-        </a>
-        <p>Je vous souhaite la bienvenue sur ce modeste blog.</p>
+      <h1 class="titreBillet"><?= $billet['titre'] ?></h1>
+      <time><?= $billet['date'] ?></time>
     </header>
-    <div id="contenu">
-        <?php foreach ($billets as $billet): ?>
-        <article>
-            <header>
-                <h1 class="titreBillet"><?= $billet['titre'] ?></h1>
-                <time><?= $billet['date'] ?></time>
-            </header>
-            <p><?= $billet['contenu'] ?></p>
-        </article>
-        <hr />
-        <?php endforeach; ?>
-    </div> <!-- #contenu -->
+    <p><?= $billet['contenu'] ?></p>
+  </article>
+  <hr />
+<?php endforeach; ?>
+<?php $contenu = ob_get_clean(); ?>
 
-    <footer id="piedBlog">
-        Blog réalisé avec PHP, HTML5 et CSS.
-    </footer>
-
-    </div> <!-- #global -->
-</body>
-
-</html>
+<?php require 'gabarit.php'; ?>
