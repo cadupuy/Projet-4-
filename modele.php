@@ -12,6 +12,7 @@ function getBillets() {
 // Effectue la connexion à la BDD
 // Instancie et renvoie l'objet PDO associé
 function getBdd() {
-  $bdd = new PDO('mysql:host=localhost;dbname=projet 4;charset=utf8', 'root', '');
-  return $bdd;
+    $bdd = new PDO('mysql:host=localhost;dbname=projet 4;charset=utf8',
+      'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    return $bdd;
 }
