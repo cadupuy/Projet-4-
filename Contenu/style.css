@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -13,26 +14,29 @@ h1 {
 }
 
 .titreBillet {
-    margin-bottom : 0px;
+    margin-bottom: 0px;
 }
 
 #global {
-    min-height: 100%;  /* Voir commentaire sur html et body plus haut */
+    min-height: 100%;
+    /* Voir commentaire sur html et body plus haut */
     background: #333534;
     width: 70%;
-    margin: auto;    /* Permet de centrer la div */
+    margin: auto;
+    /* Permet de centrer la div */
     text-align: justify;
     padding: 5px 20px;
 }
 
 #contenu {
-    margin-bottom : 30px;
+    margin-bottom: 30px;
 }
 
-#titreBlog, #piedBlog {
+#titreBlog,
+#piedBlog {
     text-align: center;
 }
 
 #titreReponses {
-    font-size : 100%;
+    font-size: 100%;
 }
