@@ -28,6 +28,10 @@ h1 {
     padding: 5px 20px;
 }
 
+#txtCommentaire {
+    width: 50%;
+}
+
 #contenu {
     margin-bottom: 30px;
 }
