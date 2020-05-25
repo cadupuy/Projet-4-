@@ -23,6 +23,15 @@ try {
        commenter($auteur, $contenu, $idBillet);
      }
 
+    else if ($_GET['action'] == 'vueConnexion') {
+        require 'Vue/vueConnexion.php';
+    }
+
+     else if ($_GET['action'] == 'connexion') {
+
+         authentification($_POST['pseudo'], $_POST['password']);
+    
+        }
     else
       throw new Exception("Action non valide");
   }

@@ -1,3 +1,9 @@
+<?php
+if (isset($_SESSION['pseudo']))
+{
+    echo 'Bonjour ' . $_SESSION['pseudo'];
+} ?>
+
 <?php $titre = 'Mon Blog'; ?>
 
 <?php ob_start(); ?>

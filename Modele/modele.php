@@ -50,4 +50,16 @@ class Modele {
         return $ajout;
     }
 
+    public function getUser($pseudo){
+        //  Récupération de l'utilisateur et de son pass hashé
+        $bdd = $this->getBdd();
+        $connexion = $bdd->prepare('SELECT id, pass FROM users WHERE pseudo = :pseudo');
+        // echo $pseudo;
+        $connexion->execute(array(
+            'pseudo' => $pseudo));
+        $resultat = $connexion->fetch();
+        return $resultat;
+
+    }
+
 }

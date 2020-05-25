@@ -1,3 +1,9 @@
+<?php
+if (isset($_SESSION['pseudo']))
+{
+    echo 'Bonjour ' . $_SESSION['pseudo'];
+} ?>
+
 <!doctype html>
 <html lang="fr">
   <head>
@@ -7,8 +13,12 @@
   </head>
   <body>
       <div id="global">
+         <?php session_start(); ?>
+         <?= var_dump($_SESSION);?>
           <header>
               <a href="index.php"><h1 id="titreBlog">Mon Blog</h1></a>
+              <a href="index.php?action=vueConnexion"><h1 id="titreBlog">Connexion</h1></a>
+
               <p>Je vous souhaite la bienvenue sur ce modeste blog.</p>
           </header>
           <div id="contenu">

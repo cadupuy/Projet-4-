@@ -39,6 +39,28 @@ function getParametre($tableau, $nom) {
    if (isset($tableau[$nom])) {
      return $tableau[$nom];
    }
-   else
-     throw new Exception("Paramètre '$nom' absent");
- }
+   else {
+       throw new Exception("Paramètre '$nom' absent");
+   }
+}
+
+ function authentification($pseudo, $resultat) {
+
+    $modele = new Modele();
+    $user = $modele->getUser($pseudo);
+    var_dump($user);
+    $isPasswordCorrect = password_verify($resultat, password_hash($user['pass'], PASSWORD_DEFAULT));
+
+    if ($isPasswordCorrect){
+        session_start();
+        $_SESSION['pseudo'] = $pseudo;
+        echo 'Vous êtes connecté !';
+        header('Location: index.php');
+    }
+
+    else {
+        echo 'Mauvais identifiant ou mot de passe !';
+        require 'Vue/vueConnexion.php';
+
+    }
+}
