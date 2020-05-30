@@ -64,3 +64,8 @@ function getParametre($tableau, $nom) {
 
     }
 }
+
+function apropos() {
+  $modele = new Modele();
+  require 'Vue/vueApropos.php';
+}

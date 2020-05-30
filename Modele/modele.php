@@ -6,13 +6,13 @@ class Modele {
     public function getBillets() {
         $bdd = $this->getBdd();
         $billets = $bdd->query('select BIL_ID as id, BIL_DATE as date,'
-        . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
+          . ' BIL_TITRE as titre, BIL_CONTENU as contenu, BIL_DESC as description, BIL_IMGFOND as fond, BIL_IMGACCUEIL as accueil from T_BILLET'
         . ' order by BIL_ID desc');
         return $billets;
     }
 
+
     // Effectue la connexion à la BDD
-    // Instancie et renvoie l'objet PDO associé
     private function getBdd() {
         $bdd = new PDO('mysql:host=localhost;dbname=projet 4;charset=utf8',
           'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -23,7 +23,7 @@ class Modele {
     public function getBillet($idBillet) {
       $bdd = $this->getBdd();
       $billet = $bdd->prepare('select BIL_ID as id, BIL_DATE as date,'
-        . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
+        . ' BIL_TITRE as titre, BIL_CONTENU as contenu, BIL_DESC as description, BIL_IMGFOND as fond, BIL_IMGACCUEIL as accueil from T_BILLET'
         . ' where BIL_ID=?');
       $billet->execute(array($idBillet));
       if ($billet->rowCount() == 1)
