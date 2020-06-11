@@ -1,9 +1,9 @@
-<?php session_start(); ?>
+<?php session_start();?>
 
 <!doctype html>
 <html lang="fr">
   <head>
-      <title><?= $titre ?></title>   <!-- Élément spécifique -->
+      <title><?=$titre?></title>   <!-- Élément spécifique -->
       <meta charset="UTF-8" />
       <link rel="stylesheet" href="Contenu/style.css"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -13,8 +13,13 @@
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+      <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
-
+      <script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
   </head>
   <body>
           <header>
@@ -22,22 +27,20 @@
             <nav>
                 <ul>
                     <li class="navigation"><a href="index.php">Home</a></li>
-                    <li class="navigation"><a href='index.php?action=vueApropos.php'>À propos</a></li>
+                    <li class="navigation"><a href='index.php?action=about'>À propos</a></li>
                     <?php
-                    if (isset($_SESSION['pseudo']))
-                    {
-                        echo '<li class="navigation"><a href="index.php?action=deconnexion">Deconnexion</a></li>';
-                        echo '<li class="navigation"><a href="#">Administration</a></li>';
-                    }
-                    else {
-                        echo '<li class="navigation"><a href="index.php?action=vueConnexion"><h1 id="titreBlog">Connexion</h1></a></li>';
+if (isset($_SESSION['pseudo'])) {
+    echo '<li class="navigation"><a href="index.php?action=logout">Deconnexion</a></li>';
+    echo '<li class="navigation"><a href="index.php?action=admin">Administration</a></li>';
+} else {
+    echo '<li class="navigation"><a href="index.php?action=login">Connexion</a></li>';
 
-                    }?>
+}?>
                 </ul>
             </nav>
 
           </header>
-              <?= $contenu ?>   <!-- Élément spécifique -->
+              <?=$contenu?>   <!-- Élément spécifique -->
           <section class="footer">
 
 
