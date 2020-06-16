@@ -28,13 +28,6 @@
 
 <div class="commenter">
 
-
-<!-- <?php
-if (isset($_POST['prenom']) && isset($_POST['nom'])) {
-    $prenom = htmlspecialchars($_POST['prenom']);
-    $nom = htmlspecialchars($_POST['nom']);
-}
-?> -->
      <form method="post" action="index.php?action=commenter">
     <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo"
      required /><br />
@@ -55,7 +48,7 @@ if (isset($_POST['prenom']) && isset($_POST['nom'])) {
           </div>
 
           <div class="notification-actions">
-            <a href="<?="index.php?action=signalerCommentaire&id=" . $commentaire['id']?>">Signaler</a>
+            <a href="<?="index.php?action=signalerCommentaire&id=" . $commentaire['id'] . "&bilid=" . $billet['id']?>">Signaler</a>
           </div>
         </div>
     </div>
