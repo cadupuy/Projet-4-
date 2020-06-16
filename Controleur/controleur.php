@@ -89,6 +89,7 @@ function logout()
 function admin()
 {
     $modele = new Modele();
+    $commentaires = $modele->getCommentaire();
     $billets = $modele->getBillets();
     require 'Vue/vueAdmin.php';
 }
@@ -126,15 +127,6 @@ function ajouterArticle($titre, $contenu)
     require 'Vue/vueAdmin.php';
 }
 
-function getParametreAjout($tableau, $titre)
-{
-    if (isset($tableau[$titre])) {
-        return $tableau[$titre];
-    } else {
-        throw new Exception("Paramètre '$titre' absent");
-    }
-}
-
 // Affiche la page pour modifier un billet
 function changerArticle($idBillet)
 {
@@ -156,25 +148,45 @@ function modifierArticle($titre, $contenu, $idBillet)
     require 'Vue/vueAdmin.php';
 }
 
-function getParametreModif($tableau, $titre)
-{
-    if (isset($tableau[$titre])) {
-        return $tableau[$titre];
-    } else {
-        throw new Exception("Paramètre '$titre' absent");
-    }
-}
-
 // Affiche le signalement d'un commentaire
-function signalerCommentaires($signaler)
+function signalerCommentaires($idbillet, $idCommentaire)
 {
-
     $modele = new Modele();
-    $signaler = $modele->commentaireSignale($signaler);
+    $commentaires = $modele->getCommentaire();
+    $commentaire = $modele->getCommentaires($idBillet);
+    $signaler = $modele->commentaireSignale($idCommentaire);
     if ($signaler) {
-        header('Location: index.php');
+        header('Location: index.php?action=billet&id=' . $billet["id"]);
 
     }
     // Actualisation de l'affichage du billet
     require 'Vue/vueBillet.php';
+}
+
+// Supprime les données liées à un commentaire de la bdd
+function supprimerCommentaire($idCommentaire)
+{
+    $modele = new Modele();
+    $commentaire = $modele->getCommentaire();
+    $supprimer = $modele->deleteCommentaire($idCommentaire);
+    if ($supprimer) {
+        header('Location: index.php?action=admin');
+
+    }
+    // Actualisation de l'affichage
+    require 'Vue/vueAdmin.php';
+}
+
+// Valide un commentaire dans le panneau d'administration
+function validerCommentaire($idCommentaire)
+{
+    $modele = new Modele();
+    $commentaire = $modele->getCommentaire();
+    $valider = $modele->commentaireValide($idCommentaire);
+    if ($valider) {
+        header('Location: index.php?action=admin');
+
+    }
+    // Actualisation de l'affichage
+    require 'Vue/vueAdmin.php';
 }

@@ -28,14 +28,21 @@
 
 <div class="commenter">
 
+
+<!-- <?php
+if (isset($_POST['prenom']) && isset($_POST['nom'])) {
+    $prenom = htmlspecialchars($_POST['prenom']);
+    $nom = htmlspecialchars($_POST['nom']);
+}
+?> -->
      <form method="post" action="index.php?action=commenter">
-     <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo"
+    <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo"
      required /><br />
      <textarea id="txtCommentaire" name="contenu" rows="4"
-        placeholder="Votre commentaire" required></textarea><br />
+        placeholder="Votre commentaire" required><?php htmlspecialchars()?></textarea><br />
         <input type="hidden" name="id" value="<?=$billet['id']?>" />
         <input class="bouton2" type="submit" value="Commenter ›" />
-    </form>
+</form>
 </div>
 
     <?php foreach ($commentaires as $commentaire): ?>
@@ -48,12 +55,7 @@
           </div>
 
           <div class="notification-actions">
-
-
-          <form method="post" action="index.php?action=signalerCommentaire">
-      <input class="fas fa-pencil-alt" type="submit" value="Signaler ›" id="submit" name="signaler">
-
-    </form>
+            <a href="<?="index.php?action=signalerCommentaire&id=" . $commentaire['id']?>">Signaler</a>
           </div>
         </div>
     </div>

@@ -31,9 +31,9 @@ try {
 
         //  ACTION POUR SIGNALER UN COMMENTAIRE
         else if ($_GET['action'] == 'signalerCommentaire') {
-            $sigaler = getParametre($_POST, 'signaler');
-            signalerCommentaires($signaler);
-
+            $idCommentaire = getParametre($_GET, 'id');
+            $idbillet = getParametre($_GET, 'id');
+            signalerCommentaires($idbillet, $idCommentaire);
         }
 
         // ACTION POUR SE CONNECTER
@@ -71,16 +71,16 @@ try {
 
         else if ($_GET['action'] == 'modificationBillet') {
             $idBillet = getParametre($_GET, 'id');
-            $titre = getParametreModif($_POST, 'titre');
-            $contenu = getParametreModif($_POST, 'contenu');
+            $titre = getParametre($_POST, 'titre');
+            $contenu = getParametre($_POST, 'contenu');
             modifierArticle($titre, $contenu, $idBillet);
         }
 
         // ACTION POUR POSTER LE NOUVEL ARTICLE
 
         else if ($_GET['action'] == 'ajoutBillet') {
-            $titre = getParametreAjout($_POST, 'titre');
-            $contenu = getParametreAjout($_POST, 'contenu');
+            $titre = getParametre($_POST, 'titre');
+            $contenu = getParametre($_POST, 'contenu');
             ajouterArticle($titre, $contenu);
 
         }
@@ -96,6 +96,20 @@ try {
         else if ($_GET['action'] == 'delete') {
             $idBillet = getParametre($_GET, 'id');
             supprimer($idBillet);
+
+        }
+
+        // ACTION POUR SUPPRIMER UN COMMENTAIRE
+        else if ($_GET['action'] == 'deleteCom') {
+            $idCommentaire = getParametre($_GET, 'id');
+            supprimerCommentaire($idCommentaire);
+
+        }
+
+        // ACTION POUR VALIDER UN COMMENTAIRE
+        else if ($_GET['action'] == 'validerCom') {
+            $idCommentaire = getParametre($_GET, 'id');
+            validerCommentaire($idCommentaire);
 
         }
 
