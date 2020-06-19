@@ -1,20 +1,27 @@
 
 
-<?php $titre = "Connexion"; ?>
+<?php $titre = "Connexion";?>
 
-<?php ob_start(); ?>
+<?php ob_start();?>
 
-<div class="formulaireConnexion">
-<h2 class="titleConnexion">Bonjour !</h2>
 
-<form class="formConnexion" method="post" action="index.php?action=connexion">
-        <label for="pseudo">Pseudo</label><br>
-        <input type="text" id="pseudo" name="pseudo"><br>
-        <label for="password">Mot de passe</label><br>
-        <input type="password" id="password" name="password"><br>
-        <input class="bouton2" type="submit" value="Connexion ›" id="submit" name="Connexion ›">
-    </form>
-</div>
-<?php $contenu = ob_get_clean(); ?>
+<section class="connexion">
+    <h2 class="bioTitre">Connexion</h2>
 
-<?php require 'Vue/gabarit.php'; ?>
+    <div class="formulaireConnexion">
+        <form class="formConnexion" method="post" action="index.php?action=connexion">
+
+         <label class="label" for="pseudo">Pseudo٭</label><br>
+         <input class="formulairecontact" type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required><br>
+
+         <label class="label" for="password">Mot de passe٭</label><br>
+         <input class="formulairecontact" type="password" id="password" name="password" placeholder="Mot de passe" required><br>
+         <input class="boutonConnexion" type="submit" value="CONNEXION" id="submit" name="Connexion">
+        </form>
+    </div>
+
+</section>
+
+<?php $contenu = ob_get_clean();?>
+
+<?php require 'Vue/gabarit.php';?>

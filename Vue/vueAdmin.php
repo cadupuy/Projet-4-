@@ -1,8 +1,24 @@
 
 
+
 <?php $titre = 'Administration';?>
 
 <?php ob_start();?>
+
+
+<!-- <?php
+// penser à mettre "or" au lieu de "and"
+// if (!isset($_SESSION['pseudo'])) {
+//     //rediriger l'utilisateur vers la page d'accueil
+//     header("Location: index.php");
+// } else {
+//     exit;
+
+// }
+?> -->
+
+
+
 
 
 <a class="bouton3" href="index.php?action=ajouterArticle">Ajouter un article ›</a>

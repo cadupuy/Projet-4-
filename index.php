@@ -36,13 +36,32 @@ try {
             signalerCommentaires($idbillet, $idCommentaire);
         }
 
-        // ACTION POUR SE CONNECTER
+        // ACTION POUR ATTEINDRE LA PAGE CONNEXION
         else if ($_GET['action'] == 'login') {
 
             require 'Vue/vueConnexion.php';
-        } else if ($_GET['action'] == 'connexion') {
+        }
 
-            authentification($_POST['pseudo'], $_POST['password']);
+        // ACTION POUR SE CONNECTER
+        else if ($_GET['action'] == 'connexion') {
+            $pseudo = getParametre($_POST, 'pseudo');
+            $resultat = getParametre($_POST, 'password');
+            authentification($pseudo, $resultat);
+
+        }
+
+        // ACTION POUR S'INSCRIRE'
+        else if ($_GET['action'] == 'coco') {
+            $pseudo = getParametre($_POST, 'pseudo');
+            $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+            utilisateur($pseudo, $pass);
+
+        }
+
+        // ACTION POUR S'INSCRIRE'
+        else if ($_GET['action'] == 'inscription') {
+
+            require 'Vue/vueGO.php';
 
         }
 

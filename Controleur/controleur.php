@@ -53,15 +53,15 @@ function authentification($pseudo, $resultat)
 
     $modele = new Modele();
     $user = $modele->getUser($pseudo);
-    $isPasswordCorrect = password_verify($resultat, password_hash($user['pass'], PASSWORD_DEFAULT));
-
+    $isPasswordCorrect = password_verify($resultat, $user['pass']);
+    // $isPasswordCorrect = password_verify($resultat, password_hash($user['pass'], PASSWORD_DEFAULT));
     if ($isPasswordCorrect) {
         session_start();
         $_SESSION['pseudo'] = $pseudo;
         echo 'Vous êtes connecté !';
         header('Location: index.php');
     } else {
-        echo 'Mauvais identifiant ou mot de passe !';
+        throw new Exception("Mauvais identifiant ou mot de passe !");
         require 'Vue/vueConnexion.php';
 
     }
@@ -189,4 +189,17 @@ function validerCommentaire($idCommentaire)
     }
     // Actualisation de l'affichage
     require 'Vue/vueAdmin.php';
+}
+
+// Ajoute un utilisateur à la base de données
+function utilisateur($pseudo, $pass)
+{
+    $modele = new Modele();
+    $utilisateur = $modele->ajouterUtilisateur($pseudo, $pass);
+    if ($utilisateur) {
+        header('Location: index.php?action=inscription');
+
+    }
+    // Actualisation de l'affichage
+    require 'Vue/vueGO.php';
 }

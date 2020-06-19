@@ -139,4 +139,13 @@ class Modele
         return $suppression;
     }
 
+    public function ajouterUtilisateur($pseudo, $pass)
+    {
+        $bdd = $this->getBdd();
+        $ajout = $bdd->prepare('INSERT into users(pseudo, pass)'
+            . ' values(?, ?)');
+        $ajout->execute(array($pseudo, $pass));
+        return $ajout;
+    }
+
 }
