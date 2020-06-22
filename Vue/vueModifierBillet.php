@@ -3,13 +3,19 @@
 <?php ob_start();?>
 <?php $billets = $billet?>
 
-    <form method="post" action="<?="index.php?action=modificationBillet&id=" . $billet['id']?>">
-      <input type="text" id="titre" name="titre" value="<?=$billet['titre']?>"><br>
-      <textarea id="mytextarea" name="contenu"><?=$billet['contenu']?></textarea>
-      <input class="bouton2" type="submit" value="Modifier ›" id="submit" name="ajoutBillet ›">
 
+<section class='ajoutadmin'>
+
+    <form class="ajoutbillet" method="post" action="<?="index.php?action=modificationBillet&id=" . $billet['id']?>">
+      <input class="titreajout" type="text" id="titre" name="titre"  value="<?=$billet['titre']?>"><br>
+      <input class="imageajout" type="text" id="image" name="image"  value="<?=$billet['titre']?>"><br>
+      <textarea id="mytextarea" name="contenu" placeholder="Contenu de l'article"><?=$billet['contenu']?></textarea>
+      <input class="boutonAjout" type="submit" value="MODIFIER" id="submit" name="ajoutBillet ›">
+     <P> #2B2F33</P> #2B2F33
     </form>
+    </section>
+
 
 <?php $contenu = ob_get_clean();?>
 
-<?php require 'Vue/gabarit.php';?>
+<?php require 'Vue/gabaritAdmin.php';?>

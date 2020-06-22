@@ -76,6 +76,7 @@
 </form>
 </div>
 
+
 <?php $contenu = ob_get_clean();?>
 
 <?php require 'Vue/gabarit.php';?>

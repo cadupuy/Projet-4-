@@ -58,6 +58,10 @@ header {
   margin-right: 100px;
 }
 
+.vertical {
+  width: 8px;
+}
+
 .ulNav {
   position: relative;
   top: 10px;
@@ -72,6 +76,27 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  right: 90px;
+}
+
+.navavatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  right: 150px;
+}
+
+.prenom {
+  position: relative;
+  left: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0px;
+}
+
+.prenom a:hover {
+  color: black;
 }
 
 .fa-search {
@@ -127,9 +152,16 @@ header {
   position: relative;
   justify-content: center;
   font-size: 15px;
-  margin-top: -30px;
+  margin-top: -40px;
   margin-bottom: 40px;
   letter-spacing: 0.7px;
+}
+
+.avatar3 {
+  position: relative;
+  width: 50px;
+  border-radius: 50%;
+  border: 9px solid white;
 }
 
 .navigationHome {
@@ -542,55 +574,6 @@ header {
   color: #333333;
 }
 
-/* STYLES DE LA PAGE CONNEXION */
-
-.formulaireConnexion {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  margin-top: 80px;
-}
-
-.connexion {
-  position: relative;
-  margin-bottom: 100px;
-}
-
-.label {
-  position: relative;
-  background-color: white;
-  padding: 3px;
-  top: 33px;
-  left: 26px;
-  font-weight: bold;
-  font-size: 16px;
-  color: #555555;
-}
-
-.formulairecontact {
-  width: 500px;
-  border: 1px solid lightgrey;
-  padding: 10px;
-  padding-left: 28px;
-  font-family: "poppins";
-  font-size: 16px;
-  color: #999999;
-  height: 60px;
-  margin-top: 20px;
-}
-
-.boutonConnexion {
-  background-color: white;
-  font-size: 14px;
-  border: 2px solid #555555;
-
-  padding: 18px 35px 18px 35px;
-  font-weight: bolder;
-  margin-top: 40px;
-  letter-spacing: 0.7px;
-}
 
 /* STYLE D'UNE PAGE BILLET */
 
@@ -687,6 +670,7 @@ time {
   bottom: 15px;
   font-size: 16px;
 }
+
 .invite {
   position: relative;
   bottom: 69px;
@@ -701,6 +685,7 @@ time {
   font-size: 16px;
   line-height: 32px;
   color: #111111;
+  width: 650px;
 }
 
 .signaler {
@@ -856,6 +841,7 @@ time {
   font-size: 18px;
   color: #333333;
 }
+
 .fb {
   font-size: 13px;
   letter-spacing: 1px;
@@ -876,6 +862,7 @@ time {
   font-weight: bold;
   color: #0077b5;
 }
+
 .insta {
   font-size: 13px;
   letter-spacing: 1px;
@@ -925,12 +912,14 @@ time {
   margin: auto;
   top: 15px;
 }
+
 .laissercommentaire {
   font-size: 26px;
   color: #111111;
   position: relative;
   right: 20px;
 }
+
 .banniere3 {
   width: 700px;
   height: 15px;
@@ -952,4 +941,131 @@ time {
   font-weight: bolder;
   letter-spacing: 0.7px;
   top: 40px;
+}
+
+/* STYLES POUR LA PAGE D'ADMINISTRATION */
+.boutonajout {
+  position: relative;
+  background-color: white;
+  font-size: 14px;
+  border: 2px solid #555555;
+  padding: 18px 45px 18px 45px;
+  font-weight: bolder;
+  letter-spacing: 0.7px;
+  top: 40px;
+}
+
+.ensembleCommentaires {
+  position: relative;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  width: 700px;
+  margin-bottom: 150px;
+}
+
+.titre1Dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.titre2Dashboard {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+td {
+  border: 1px solid black;
+  padding: 15px;
+}
+
+.dashboard {
+  margin-top: 150px;
+}
+
+.ensembleBillets {
+  position: relative;
+  margin: auto;
+  display: flex;
+  width: 100%;
+
+  justify-content: center;
+}
+
+.boutonDashboard {
+  background-color: white;
+  font-size: 14px;
+  border: 2px solid #555555;
+  position: relative;
+  padding: 18px 35px 18px 35px;
+  font-weight: bolder;
+  margin-top: 40px;
+  letter-spacing: 0.7px;
+  right: 300px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 200px;
+}
+
+/* STYLES POUR LA PAGE D'AJOUT D'UN BILLET */
+
+.ajoutbillet {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  left: 400px;
+  font-family: "poppins";
+}
+
+#mytextarea {
+  width: 900px !important;
+}
+
+.titreajout {
+  width: 700px;
+  padding: 10px;
+}
+
+.imageajout {
+  width: 700px;
+  padding: 10px;
+}
+
+.ajoutadmin {
+  margin-top: 120px;
+  margin-bottom: 100px;
+}
+
+.boutonAjout {
+  background-color: white;
+  font-size: 14px;
+  border: 2px solid #555555;
+
+  padding: 18px 35px 18px 35px;
+  font-weight: bolder;
+  margin-top: 40px;
+  letter-spacing: 0.7px;
+}
+
+/* STYLES DE LA PAGE CONNEXION  */
+
+.formulaireConnexion {}
+
+.formConnexion {
+
+  background-color: white;
+  padding: 100px;
+
+}
+
+.fondco {
+  background-color: #F2F2F2;
+
 }

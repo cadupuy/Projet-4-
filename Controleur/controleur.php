@@ -1,21 +1,23 @@
 <?php
-
-require 'Modele/Modele.php';
+require_once 'Modele/modeleBillets.php';
+require_once 'Modele/modeleCommentaires.php';
+require_once 'Modele/modeleUtilisateur.php';
 
 // Affiche la liste de tous les billets du blog
 function accueil()
 {
-    $modele = new Modele();
-    $billets = $modele->getBillets();
+    $modeleBillets = new BilletsManager();
+    $billets = $modeleBillets->getBillets();
     require 'Vue/vueAccueil.php';
 }
 
 // Affiche les détails sur un billet
 function billet($idBillet)
 {
-    $modele = new Modele();
-    $billet = $modele->getBillet($idBillet);
-    $commentaires = $modele->getCommentaires($idBillet);
+    $modeleCommentaires = new CommentairesManager();
+    $modeleBillets = new BilletsManager();
+    $billet = $modeleBillets->getBillet($idBillet);
+    $commentaires = $modeleCommentaires->getCommentaires($idBillet);
     require 'Vue/vueBillet.php';
 }
 
@@ -25,18 +27,20 @@ function erreur($msgErreur)
     require 'Vue/vueErreur.php';
 }
 
-// Affiche un commentaire
+// Ajouter un commentaire
 function commenter($auteur, $contenu, $idBillet)
 {
-    $modele = new Modele();
-    $billet = $modele->getBillet($idBillet);
-    $commenter = $modele->ajouterCommentaire($auteur, $contenu, $idBillet);
+    $modeleCommentaires = new CommentairesManager();
+    $modeleBillets = new BilletsManager();
+    $billet = $modeleBillets->getBillet($idBillet);
+    $commenter = $modeleCommentaires->ajouterCommentaire($auteur, $contenu, $idBillet);
     if ($commenter) {
         header('Location: index.php?action=billet&id=' . $billet["id"]);
 
+    } else {
+        throw new Exception('Impossible d\'ajouter le commentaire !');
     }
-    // Actualisation de l'affichage du billet
-    require 'Vue/vueBillet.php';
+
 }
 
 function getParametre($tableau, $nom)
@@ -51,18 +55,16 @@ function getParametre($tableau, $nom)
 function authentification($pseudo, $resultat)
 {
 
-    $modele = new Modele();
-    $user = $modele->getUser($pseudo);
+    $modeleUtilistateur = new UtilisateurManager();
+    $user = $modeleUtilistateur->getUser($pseudo);
     $isPasswordCorrect = password_verify($resultat, $user['pass']);
-    // $isPasswordCorrect = password_verify($resultat, password_hash($user['pass'], PASSWORD_DEFAULT));
+
     if ($isPasswordCorrect) {
         session_start();
         $_SESSION['pseudo'] = $pseudo;
-        echo 'Vous êtes connecté !';
         header('Location: index.php');
     } else {
         throw new Exception("Mauvais identifiant ou mot de passe !");
-        require 'Vue/vueConnexion.php';
 
     }
 }
@@ -88,24 +90,26 @@ function logout()
 // Affiche la page d'administration
 function admin()
 {
-    $modele = new Modele();
-    $commentaires = $modele->getCommentaire();
-    $billets = $modele->getBillets();
+    $modeleBillets = new BilletsManager();
+    $modeleCommentaires = new CommentairesManager();
+    $commentaires = $modeleCommentaires->getCommentaire();
+    $billets = $modeleBillets->getBillets();
     require 'Vue/vueAdmin.php';
 }
 
 // Supprime les données liées à un billets de la bdd
 function supprimer($idBillet)
 {
-    $modele = new Modele();
-    $billet = $modele->getBillet($idBillet);
-    $supprimer = $modele->deleteBillet($idBillet);
+    $modeleBillets = new BilletsManager();
+    $billet = $modeleBillets->getBillet($idBillet);
+    $supprimer = $modeleBillets->deleteBillet($idBillet);
     if ($supprimer) {
         header('Location: index.php?action=admin');
 
     }
     // Actualisation de l'affichage
-    require 'Vue/vueAdmin.php';
+    throw new Exception('Impossible de supprimer l\'article');
+
 }
 
 // Affiche la page pour ajouter un billet
@@ -117,58 +121,59 @@ function ajoutArticle()
 // Affiche un nouveau billet
 function ajouterArticle($titre, $contenu)
 {
-    $modele = new Modele();
-    $ajouter = $modele->ajouterBillet($titre, $contenu);
+    $modeleBillets = new BilletsManager();
+    $ajouter = $modeleBillets->ajouterBillet($titre, $contenu);
     if ($ajouter) {
         header('Location: index.php?action=admin');
 
     }
     // Actualisation de l'affichage du billet
-    require 'Vue/vueAdmin.php';
+    throw new Exception('Impossible d\'ajouter l\'article');
 }
 
 // Affiche la page pour modifier un billet
 function changerArticle($idBillet)
 {
-    $modele = new Modele();
-    $billet = $modele->getBillet($idBillet);
+    $modeleBillets = new BilletsManager();
+    $billet = $modeleBillets->getBillet($idBillet);
     require 'Vue/vueModifierBillet.php';
 }
 
 // Modifie un billet déjà existant
 function modifierArticle($titre, $contenu, $idBillet)
 {
-    $modele = new Modele();
-    $modifier = $modele->modifierBillet($titre, $contenu, $idBillet);
+    $modeleBillets = new BilletsManager();
+    $modifier = $modeleBillets->modifierBillet($titre, $contenu, $idBillet);
     if ($modifier) {
         header('Location: index.php?action=admin');
 
     }
-    // Actualisation de l'affichage du billet
-    require 'Vue/vueAdmin.php';
+    throw new Exception('Impossible de modifier le billet !');
+
 }
 
 // Affiche le signalement d'un commentaire
-function signalerCommentaires($idbillet, $idCommentaire)
+function signalerCommentaires($idBillet, $idCommentaire)
 {
-    $modele = new Modele();
-    $commentaires = $modele->getCommentaire();
-    $commentaire = $modele->getCommentaires($idBillet);
-    $signaler = $modele->commentaireSignale($idCommentaire);
+    $modeleCommentaires = new CommentairesManager();
+    $commentaires = $modeleCommentaires->getCommentaire();
+    $commentaire = $modeleCommentaires->getCommentaires($idBillet);
+    $signaler = $modeleCommentaires->commentaireSignale($idCommentaire);
     if ($signaler) {
-        header('Location: index.php?action=billet&id=' . $billet["id"]);
+        echo $idBillet . " " . $idCommentaire;
+        // header('Location: index.php?action=billet&id=' . $idBillet);
 
+    } else {
+        throw new Exception('Le commentaire n\'a pas été signalé');
     }
-    // Actualisation de l'affichage du billet
-    require 'Vue/vueBillet.php';
 }
 
 // Supprime les données liées à un commentaire de la bdd
 function supprimerCommentaire($idCommentaire)
 {
-    $modele = new Modele();
-    $commentaire = $modele->getCommentaire();
-    $supprimer = $modele->deleteCommentaire($idCommentaire);
+    $modeleCommentaires = new CommentairesManager();
+    $commentaire = $modeleCommentaires->getCommentaire();
+    $supprimer = $modeleCommentaires->deleteCommentaire($idCommentaire);
     if ($supprimer) {
         header('Location: index.php?action=admin');
 
@@ -180,26 +185,26 @@ function supprimerCommentaire($idCommentaire)
 // Valide un commentaire dans le panneau d'administration
 function validerCommentaire($idCommentaire)
 {
-    $modele = new Modele();
-    $commentaire = $modele->getCommentaire();
-    $valider = $modele->commentaireValide($idCommentaire);
+    $modeleCommentaires = new CommentairesManager();
+    $commentaire = $modeleCommentaires->getCommentaire();
+    $valider = $modeleCommentaires->commentaireValide($idCommentaire);
     if ($valider) {
         header('Location: index.php?action=admin');
 
     }
     // Actualisation de l'affichage
-    require 'Vue/vueAdmin.php';
+    throw new Exception('Impossible de supprimer le commentaire !');
 }
 
 // Ajoute un utilisateur à la base de données
 function utilisateur($pseudo, $pass)
 {
-    $modele = new Modele();
-    $utilisateur = $modele->ajouterUtilisateur($pseudo, $pass);
+    $modeleUtilistateur = new UtilisateurManager();
+    $utilisateur = $modeleUtilistateur->ajouterUtilisateur($pseudo, $pass);
     if ($utilisateur) {
         header('Location: index.php?action=inscription');
 
     }
     // Actualisation de l'affichage
-    require 'Vue/vueGO.php';
+    throw new Exception('Impossible d\'ajouter l\'utilisateur');
 }

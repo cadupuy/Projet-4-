@@ -1,4 +1,3 @@
-<?php session_start();?>
 
 <!doctype html>
 <html lang="fr">
@@ -46,16 +45,7 @@ if (isset($_SESSION['pseudo'])) {
               <?=$contenu?>   <!-- Élément spécifique -->
 
 
-              <!-- DEBUT DE LA PARTIE FOOTER -->
-              <section class="piedDePage2">
-                  <div class="listPied">
-               <img class="iconesbas" src="contenu/images/bas.png" alt="">
-          </div>
-                <p class="chad">© 2020 <strong>Charles-Antoine Dupuy</strong></p>
-                <p class="copyright">All Rights Reserved.</p>
-                <p class="haut">HAUT DE PAGE</p>
-</section>
+              <script src="Contenu/signale.js"></script>
 
-<script src="Blog/Contenu/signale.js"></script>
   </body>
 </html>

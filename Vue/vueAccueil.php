@@ -20,9 +20,10 @@
   <body>
     <header>
         <div class="accueil">
-             <div>
-                 <img class="avatar" src="contenu/images/jf.webp" alt="">
-             </div>
+        <a href="index.php">
+    <div>
+                 <img class="avatar" src="contenu/images/jf.jpg" alt="">
+             </div></a>
              <div class="blockDescription">
                    <h1 class="titre">Jean <br>  Forteroche</h1>
                    <p class="description">Retrouvez toutes les histoires <br> de mon périple en Alaksa.</p>
@@ -128,6 +129,7 @@ if (isset($_SESSION['pseudo'])) {
             </div>
 </div>
 </section>
+<script src="Contenu/signale.js"></script>
 
 </body>
 </html>

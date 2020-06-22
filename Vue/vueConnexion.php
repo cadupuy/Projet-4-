@@ -1,27 +1,39 @@
+<?php session_start();?>
+
+<!doctype html>
+<html lang="fr">
+  <head>
+      <title>Connexion</title>   <!-- Élément spécifique -->
+      <meta charset="UTF-8" />
+      <link rel="stylesheet" href="Contenu/style.css"/>
 
 
-<?php $titre = "Connexion";?>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+      <script src="https://kit.fontawesome.com/22878924ef.js" crossorigin="anonymous"></script>
+      <script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
+  </head>
+  <body>
 
-<?php ob_start();?>
+<section class="fondco">
+
+<div class="formulaireConnexion">
+<h2 class="titleConnexion">Connexion</h2>
 
 
-<section class="connexion">
-    <h2 class="bioTitre">Connexion</h2>
-
-    <div class="formulaireConnexion">
-        <form class="formConnexion" method="post" action="index.php?action=connexion">
-
-         <label class="label" for="pseudo">Pseudo٭</label><br>
-         <input class="formulairecontact" type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required><br>
-
-         <label class="label" for="password">Mot de passe٭</label><br>
-         <input class="formulairecontact" type="password" id="password" name="password" placeholder="Mot de passe" required><br>
-         <input class="boutonConnexion" type="submit" value="CONNEXION" id="submit" name="Connexion">
-        </form>
-    </div>
+<form class="formConnexion" method="post" action="index.php?action=connexion">
+        <label for="pseudo">Pseudo</label><br>
+        <input type="text" id="pseudo" name="pseudo"><br>
+        <label for="password">Mot de passe</label><br>
+        <input type="password" id="password" name="password"><br>
+        <input class="bouton2" type="submit" value="Connexion" id="submit" name="Connexion">
+    </form>
+</div>
 
 </section>
-
-<?php $contenu = ob_get_clean();?>
-
-<?php require 'Vue/gabarit.php';?>
+  </body>
+  </html>

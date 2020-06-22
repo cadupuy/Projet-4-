@@ -75,60 +75,122 @@ try {
         // ACTION POUR ACCÉDER À LA PAGE D'AJOUT D'ARTICLE
         else if ($_GET['action'] == 'ajouterArticle') {
 
-            require 'Vue/vueAjoutBillet.php';
+            session_start();
+            if (!isset($_SESSION['pseudo'])) {
+                //rediriger l'utilisateur vers la page d'accueil
+                header("Location: index.php");
+
+            } else {
+                require 'Vue/vueAjoutBillet.php';
+
+            }
 
         }
 
         // ACTION POUR ACCÉDER À LA PAGE DE MODIFICATION D'UN ARTICLE
         else if ($_GET['action'] == 'modifierArticle') {
-            $idBillet = getParametre($_GET, 'id');
-            changerArticle($idBillet);
+
+            session_start();
+            if (!isset($_SESSION['pseudo'])) {
+                //rediriger l'utilisateur vers la page d'accueil
+                header("Location: index.php");
+
+            } else {
+                $idBillet = getParametre($_GET, 'id');
+                changerArticle($idBillet);
+            }
 
         }
 
         // ACTION POUR MODIFIER UN ARTICLE EXISTANT
 
         else if ($_GET['action'] == 'modificationBillet') {
-            $idBillet = getParametre($_GET, 'id');
-            $titre = getParametre($_POST, 'titre');
-            $contenu = getParametre($_POST, 'contenu');
-            modifierArticle($titre, $contenu, $idBillet);
+
+            session_start();
+            if (!isset($_SESSION['pseudo'])) {
+                //rediriger l'utilisateur vers la page d'accueil
+                header("Location: index.php");
+
+            } else {
+                $idBillet = getParametre($_GET, 'id');
+                $titre = getParametre($_POST, 'titre');
+                $contenu = getParametre($_POST, 'contenu');
+                modifierArticle($titre, $contenu, $idBillet);
+            }
+
         }
 
         // ACTION POUR POSTER LE NOUVEL ARTICLE
 
         else if ($_GET['action'] == 'ajoutBillet') {
-            $titre = getParametre($_POST, 'titre');
-            $contenu = getParametre($_POST, 'contenu');
-            ajouterArticle($titre, $contenu);
+
+            session_start();
+            if (!isset($_SESSION['pseudo'])) {
+                //rediriger l'utilisateur vers la page d'accueil
+                header("Location: index.php");
+
+            } else {
+                $titre = getParametre($_POST, 'titre');
+                $contenu = getParametre($_POST, 'contenu');
+                ajouterArticle($titre, $contenu);
+            }
 
         }
 
         // ACTION POUR ARRIVER SUR LA PAGE ADMINISTRATION
         else if ($_GET['action'] == 'admin') {
+            session_start();
+            if (!isset($_SESSION['pseudo'])) {
+                //rediriger l'utilisateur vers la page d'accueil
+                header("Location: index.php");
 
-            admin();
+            } else {
+                admin();
 
+            }
         }
 
         // ACTION POUR SUPPRIMER UN BILLET
         else if ($_GET['action'] == 'delete') {
-            $idBillet = getParametre($_GET, 'id');
-            supprimer($idBillet);
+
+            session_start();
+            if (!isset($_SESSION['pseudo'])) {
+                //rediriger l'utilisateur vers la page d'accueil
+                header("Location: index.php");
+
+            } else {
+                $idBillet = getParametre($_GET, 'id');
+                supprimer($idBillet);
+            }
 
         }
 
         // ACTION POUR SUPPRIMER UN COMMENTAIRE
         else if ($_GET['action'] == 'deleteCom') {
-            $idCommentaire = getParametre($_GET, 'id');
-            supprimerCommentaire($idCommentaire);
+            session_start();
+            if (!isset($_SESSION['pseudo'])) {
+                //rediriger l'utilisateur vers la page d'accueil
+                header("Location: index.php");
+
+            } else {
+                $idCommentaire = getParametre($_GET, 'id');
+                supprimerCommentaire($idCommentaire);
+            }
 
         }
 
         // ACTION POUR VALIDER UN COMMENTAIRE
         else if ($_GET['action'] == 'validerCom') {
-            $idCommentaire = getParametre($_GET, 'id');
-            validerCommentaire($idCommentaire);
+
+            session_start();
+            if (!isset($_SESSION['pseudo'])) {
+                //rediriger l'utilisateur vers la page d'accueil
+                header("Location: index.php");
+
+            } else {
+                $idCommentaire = getParametre($_GET, 'id');
+                validerCommentaire($idCommentaire);
+            }
 
         }
 

@@ -5,29 +5,15 @@
 
 <?php ob_start();?>
 
+<section class="dashboard">
 
-<!-- <?php
-// penser à mettre "or" au lieu de "and"
-// if (!isset($_SESSION['pseudo'])) {
-//     //rediriger l'utilisateur vers la page d'accueil
-//     header("Location: index.php");
-// } else {
-//     exit;
+<a class="boutonDashboard" href="index.php?action=ajouterArticle">Ajouter un article ›</a>
 
-// }
-?> -->
+<h2 class="titre1Dashboard">Ensemble de vos articles</h2>
 
 
 
-
-
-<a class="bouton3" href="index.php?action=ajouterArticle">Ajouter un article ›</a>
-
-<h2>Ensemble de vos articles</h2>
-
-
-
-<table>
+<table class="ensembleBillets">
   <tr>
     <td>Titre</td>
     <td>Date</td>
@@ -37,16 +23,16 @@
   <tr>
     <td><?=$billet['titre']?></td>
     <td><?=$billet['date']?></td>
-    <td><a href="<?="index.php?action=modifierArticle&id=" . $billet['id']?>">Modifier</a></td>
-    <td><a href="<?="index.php?action=delete&id=" . $billet['id']?>">Supprimer</a></td>
+    <td><a href="<?="index.php?action=modifierArticle&id=" . $billet['id']?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+   <td> <a href="<?="index.php?action=delete&id=" . $billet['id']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
   </tr>
   <?php endforeach;?>
 
 </table>
 
-<h2>Commentaires signalés</h2>
+<h2 class="titre2Dashboard">Commentaires signalés</h2>
 
-<table>
+<table class='ensembleCommentaires'>
   <tr>
     <td>Auteur</td>
     <td>Message</td>
@@ -58,12 +44,15 @@
     <td><?=$commentaire['auteur']?></td>
     <td><?=$commentaire['contenu']?></td>
     <td><a href="<?="index.php?action=validerCom&id=" . $commentaire['id']?>">Valider</a></td>
-    <td><a href="<?="index.php?action=deleteCom&id=" . $commentaire['id']?>">Supprimer</a></td>
+    <td> <a href="<?="index.php?action=deleteCom&id=" . $commentaire['id']?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
   </tr>
 
   <?php endforeach;?>
 
 </table>
 
+</section>
+
+
 <?php $contenu = ob_get_clean();?>
-<?php require 'Vue/gabarit.php';?>
+<?php require 'Vue/gabaritAdmin.php';?>
