@@ -84,7 +84,6 @@ function logout()
     session_destroy();
 
     header('Location: index.php');
-
 }
 
 // Affiche la page d'administration
@@ -119,10 +118,10 @@ function ajoutArticle()
 }
 
 // Affiche un nouveau billet
-function ajouterArticle($titre, $contenu)
+function ajouterArticle($titre, $accueil, $contenu)
 {
     $modeleBillets = new BilletsManager();
-    $ajouter = $modeleBillets->ajouterBillet($titre, $contenu);
+    $ajouter = $modeleBillets->ajouterBillet($titre, $accueil, $contenu);
     if ($ajouter) {
         header('Location: index.php?action=admin');
 
@@ -140,10 +139,10 @@ function changerArticle($idBillet)
 }
 
 // Modifie un billet déjà existant
-function modifierArticle($titre, $contenu, $idBillet)
+function modifierArticle($titre, $image, $contenu, $idBillet)
 {
     $modeleBillets = new BilletsManager();
-    $modifier = $modeleBillets->modifierBillet($titre, $contenu, $idBillet);
+    $modifier = $modeleBillets->modifierBillet($titre, $image, $contenu, $idBillet);
     if ($modifier) {
         header('Location: index.php?action=admin');
 
@@ -160,8 +159,7 @@ function signalerCommentaires($idBillet, $idCommentaire)
     $commentaire = $modeleCommentaires->getCommentaires($idBillet);
     $signaler = $modeleCommentaires->commentaireSignale($idCommentaire);
     if ($signaler) {
-        echo $idBillet . " " . $idCommentaire;
-        // header('Location: index.php?action=billet&id=' . $idBillet);
+        header('Location: index.php?action=billet&id=' . $idBillet);
 
     } else {
         throw new Exception('Le commentaire n\'a pas été signalé');

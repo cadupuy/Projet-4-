@@ -8,7 +8,7 @@ class BilletsManager extends Modele
     {
         $bdd = $this->getBdd();
         $billets = $bdd->query('SELECT bil_id AS id, bil_date AS date,'
-            . ' bil_titre AS titre, bil_contenu AS contenu, bil_imgfond AS fond, bil_imgaccueil as accueil FROM T_BILLET'
+            . ' bil_titre AS titre, bil_contenu AS contenu, bil_imgaccueil as accueil FROM T_BILLET'
             . ' order by BIL_ID desc');
         return $billets;
     }
@@ -18,7 +18,7 @@ class BilletsManager extends Modele
     {
         $bdd = $this->getBdd();
         $billet = $bdd->prepare('select BIL_ID as id, BIL_DATE as date,'
-            . ' BIL_TITRE as titre, BIL_CONTENU as contenu, BIL_IMGFOND as fond, BIL_IMGACCUEIL as accueil from T_BILLET'
+            . ' BIL_TITRE as titre, BIL_CONTENU as contenu, bil_imgaccueil as accueil from T_BILLET'
             . ' where BIL_ID=?');
         $billet->execute(array($idBillet));
         if ($billet->rowCount() == 1) {
@@ -28,7 +28,6 @@ class BilletsManager extends Modele
         else {
             throw new Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
         }
-
     }
 
     //  Supprime un billet de la base de données
@@ -42,21 +41,21 @@ class BilletsManager extends Modele
     }
 
     // Ajoute les données du billet dans la table associée
-    public function ajouterBillet($titre, $contenu)
+    public function ajouterBillet($titre, $image, $contenu)
     {
         $bdd = $this->getBdd();
-        $ajoutBillet = $bdd->prepare('INSERT into T_BILLET(bil_date, bil_titre, bil_contenu)'
-            . ' values(NOW(), ?, ?)');
-        $ajoutBillet->execute(array($titre, $contenu));
+        $ajoutBillet = $bdd->prepare('INSERT into T_BILLET(bil_date, bil_titre, bil_imgaccueil, bil_contenu)'
+            . ' values(NOW(), ?, ?, ?)');
+        $ajoutBillet->execute(array($titre, $image, $contenu));
         return $ajoutBillet;
     }
 
     // Modifie les données du billet dans la table associée
-    public function modifierBillet($titre, $contenu, $idBillet)
+    public function modifierBillet($titre, $image, $contenu, $idBillet)
     {
         $bdd = $this->getBdd();
-        $modifierBillet = $bdd->prepare('UPDATE t_billet SET bil_titre=?, bil_contenu=? WHERE `t_billet`.`BIL_ID` = ?');
-        $modifierBillet->execute(array($titre, $contenu, $idBillet));
+        $modifierBillet = $bdd->prepare('UPDATE t_billet SET bil_titre=?, BIL_IMGACCUEIL =?,bil_contenu=? WHERE `t_billet`.`BIL_ID` = ?');
+        $modifierBillet->execute(array($titre, $image, $contenu, $idBillet));
         return $modifierBillet;
     }
 

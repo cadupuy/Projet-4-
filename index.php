@@ -31,9 +31,9 @@ try {
 
         //  ACTION POUR SIGNALER UN COMMENTAIRE
         else if ($_GET['action'] == 'signalerCommentaire') {
+            $idBillet = getParametre($_GET, 'bilid');
             $idCommentaire = getParametre($_GET, 'id');
-            $idbillet = getParametre($_GET, 'id');
-            signalerCommentaires($idbillet, $idCommentaire);
+            signalerCommentaires($idBillet, $idCommentaire);
         }
 
         // ACTION POUR ATTEINDRE LA PAGE CONNEXION
@@ -114,8 +114,9 @@ try {
             } else {
                 $idBillet = getParametre($_GET, 'id');
                 $titre = getParametre($_POST, 'titre');
+                $image = getParametre($_POST, 'image');
                 $contenu = getParametre($_POST, 'contenu');
-                modifierArticle($titre, $contenu, $idBillet);
+                modifierArticle($titre, $image, $contenu, $idBillet);
             }
 
         }
@@ -131,8 +132,9 @@ try {
 
             } else {
                 $titre = getParametre($_POST, 'titre');
+                $image = getParametre($_POST, 'image');
                 $contenu = getParametre($_POST, 'contenu');
-                ajouterArticle($titre, $contenu);
+                ajouterArticle($titre, $image, $contenu);
             }
 
         }
