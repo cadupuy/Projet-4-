@@ -8,7 +8,7 @@ class CommentairesManager extends Modele
     {
         $bdd = $this->getBdd();
         $commentaire = $bdd->query('SELECT com_id AS id, com_date AS date,'
-            . ' COM_AUTEUR AS auteur, com_contenu AS contenu, com_signale as signale FROM T_COMMENTAIRE'
+            . ' COM_AUTEUR AS auteur, com_contenu AS contenu, com_signale AS signale, bil_id AS idbil FROM T_COMMENTAIRE'
             . ' WHERE com_signale=true');
         return $commentaire;
     }

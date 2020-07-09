@@ -1,5 +1,6 @@
 
 <?php $titre = "Mon Blog - " . $billet['titre'];?>
+<?php session_start();?>
 
 <?php ob_start();?>
 

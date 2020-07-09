@@ -1,5 +1,8 @@
 <?php $titre = 'Mon Blog';?>
+<?php session_start();?>
+
 <?php ob_start()?>
+
 
     <div class="erreur">
         <h2 class="oups">OUPS!</h2>

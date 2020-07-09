@@ -1,6 +1,7 @@
 
 
 <?php $titre = "Inscription";?>
+<?php session_start();?>
 
 <?php ob_start();?>
 

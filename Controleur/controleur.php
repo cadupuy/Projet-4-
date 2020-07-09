@@ -100,8 +100,10 @@ function admin()
 function supprimer($idBillet)
 {
     $modeleBillets = new BilletsManager();
+    $modeleCommentaires = new CommentairesManager();
     $billet = $modeleBillets->getBillet($idBillet);
     $supprimer = $modeleBillets->deleteBillet($idBillet);
+    $supprimer = $modeleBillets->deleteBilletCom($idBillet);
     if ($supprimer) {
         header('Location: index.php?action=admin');
 

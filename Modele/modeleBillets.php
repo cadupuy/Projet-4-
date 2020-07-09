@@ -40,6 +40,16 @@ class BilletsManager extends Modele
         return $suppression;
     }
 
+    //  Supprime les commentaires associés à un billet de la base de données
+    public function deleteBilletCom($idBillet)
+    {
+        // Supprime un billet de la base de données
+        $bdd = $this->getbdd();
+        $suppression = $bdd->prepare('DELETE FROM `t_commentaire` WHERE `t_commentaire`.`bil_ID` = ?');
+        $suppression->execute(array($idBillet));
+        return $suppression;
+    }
+
     // Ajoute les données du billet dans la table associée
     public function ajouterBillet($titre, $image, $contenu)
     {
