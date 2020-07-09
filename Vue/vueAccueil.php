@@ -22,7 +22,7 @@
 
         <div class="accueil">
             <div class="avatardiv">
-                <a href="index.php"><img class="avatar" src="http://www.gloveswork.in/cabe/images/profile-round.png" alt=""></a>
+                <a href="index.php"><img class="avatar" src="contenu/images/jf.jpg" alt=""></a>
             </div>
             <div class="blockDescription">
                 <h1 class="titre">Jean Forteroche</h1>

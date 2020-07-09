@@ -22,7 +22,7 @@
             <ul class="ulNav1">
                 <a href="index.php">
                     <div class="navavatar">
-                        <img class="avatar3" src="http://www.gloveswork.in/cabe/images/profile-round.png" alt="">
+                        <img class="avatar3" src="contenu/images/jf.jpg" alt="">
                         <img class="vertical" src="contenu/images/vertical.png" alt="">
                         <h2 class='prenom'>Jean Forteroche</h2>
                     </div>
