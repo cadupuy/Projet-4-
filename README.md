@@ -6,9 +6,9 @@ Code source du Projet 4 de la formation Développeur Web d'OpenClassrooms, intit
 
 ### Derniers changements
 
-Tournure complète du projet en POO (antérieurmement uniquement le modèle)
-Ajout des namespaces au projet
-Rectifications de bugs mineurs
++ Tournure complète du projet en POO (antérieurmement uniquement le modèle)
++ Ajout des namespaces au projet
++ Rectifications de bugs mineurs
 
 ## Le projet
 
