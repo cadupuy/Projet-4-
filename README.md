@@ -2,8 +2,13 @@
 
 Code source du Projet 4 de la formation Développeur Web d'OpenClassrooms, intitulé "Créez un blog pour un écrivain"
 
-## Version 1.0.0
+## Version 1.0.5
 
+### Derniers changements
+
+Tournure complète du projet en POO (antérieurmement uniquement le modèle)
+Ajout des namespaces au projet
+Rectifications de bugs mineurs
 
 ## Le projet
 
