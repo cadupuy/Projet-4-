@@ -1,5 +1,4 @@
-<?php $titre = 'Administration';?>
-<?php ob_start();?>
+<?php $this->titre = "Administration";?>
 
 <section class="dashboard">
     <a class="boutonDashboard" href="index.php?action=ajouterArticle">Ajouter un article ›</a>
@@ -36,5 +35,3 @@
     </table>
 </section>
 
-<?php $contenu = ob_get_clean();?>
-<?php require 'Vue/gabarit.php';?>

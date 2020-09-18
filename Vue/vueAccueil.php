@@ -5,7 +5,7 @@
   <head>
       <title>Accueil</title>   <!-- Élément spécifique -->
       <meta charset="UTF-8" />
-      <link rel="stylesheet" href="Contenu/style.css"/>
+      <link rel="stylesheet" href="public/css/style.css"/>
       <meta name="viewport" content="width=device-width" />
       <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
       <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
@@ -22,12 +22,12 @@
 
         <div class="accueil">
             <div class="avatardiv">
-                <a href="index.php"><img class="avatar" src="contenu/images/jf.jpg" alt=""></a>
+                <a href="index.php"><img class="avatar" src="public/images/jf.jpg" alt=""></a>
             </div>
             <div class="blockDescription">
                 <h1 class="titre">Jean Forteroche</h1>
                 <p class="description">Retrouvez toutes les histoires de mon périple en Alaksa.</p>
-                <img class="icones" src="contenu/images/icon-img.png" alt="">
+                <img class="icones" src="public/images/icon-img.png" alt="">
             </div>
         </div>
     </header>
@@ -59,13 +59,15 @@ if (isset($_SESSION['pseudo'])) {
                     <p class="auteurArticle">Par Jean Forteroche, <?=$billet['date']?></p>
                 </div>
             </div>
-            <img class="imageFondArticle" src="<?=$billet['accueil']?>" alt="">
+            <div class="img-container">
+                <img class="imageFondArticle" src="<?=$billet['accueil']?>" alt="">
+            </div>
             <div class="extrait">
                <?=substr($billet['contenu'], 0, 180);?>
             </div>
             <div class="piedArticle">
                 <div class="articleSuivant">
-                    <img class="barre" src="Contenu/images/barre.png" alt="">
+                    <img class="barre" src="public/images/barre.png" alt="">
                     <a href="index.php?action=billet&id=<?=$billet['id']?>">
                     <p class="lirePlus">Lire Plus</p></a>
                 </div>
@@ -82,7 +84,7 @@ if (isset($_SESSION['pseudo'])) {
 
     <section class="piedDePage3">
             <div class="listPied">
-                <img class="iconesbas" src="contenu/images/bas.png" alt="">
+                <img class="iconesbas" src="public/images/bas.png" alt="">
             </div>
             <p class="chad">© 2020 <strong>Charles-Antoine Dupuy</strong></p>
             <p class="copyright">All Rights Reserved.</p>

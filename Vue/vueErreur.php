@@ -1,8 +1,4 @@
-<?php $titre = 'Mon Blog';?>
-<?php session_start();?>
-
-<?php ob_start()?>
-
+<?php $this->titre = "Oups";?>
 
     <div class="erreur">
         <h2 class="oups">OUPS!</h2>
@@ -10,6 +6,3 @@
         <a href="index.php" class="backhome">RETOUR À L'ACCUEIL</a>
     </div>
 
-<?php $contenu = ob_get_clean();?>
-
-<?php require 'Vue/gabarit.php';?>

@@ -1,7 +1,6 @@
 
-<?php $titre = 'Ajouter un article';?>
+<?php $this->titre = "Ajouter un article";?>
 
-<?php ob_start();?>
 
 <section class='ajoutadmin'>
 
@@ -12,7 +11,3 @@
       <input class="boutonAjout" type="submit" value="AJOUTER" id="submit" name="ajoutBillet ›">
   </form>
 </section>
-
-<?php $contenu = ob_get_clean();?>
-
-<?php require 'Vue/gabarit.php';?>

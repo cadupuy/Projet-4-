@@ -261,6 +261,26 @@ header {
   justify-content: center;
   align-items: center;
   margin: auto;
+  transition: transform .6s;
+  text-align: center;
+
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.imageFondArticle:hover {
+  transform: scale(1.06);
+  transform-origin: 50% 50%;
+}
+
+.img-container {
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  /* change the default display type to inline-block */
+  overflow: hidden;
+
 }
 
 .extrait {
@@ -331,6 +351,7 @@ header {
   position: relative;
   margin-bottom: -35px;
   width: 100%;
+
 }
 
 .fa-heart {
@@ -740,7 +761,7 @@ time {
   width: 650px;
 }
 
-.signaler {
+#signaler {
   font-weight: 600;
   position: relative;
   bottom: 90px;

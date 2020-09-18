@@ -1,8 +1,4 @@
-
-<?php $titre = "Mon Blog - " . $billet['titre'];?>
-<?php session_start();?>
-
-<?php ob_start();?>
+<?php $this->titre = "Mon Blog - " . $billet['titre'];?>
 
 <section class="enteteArticle2">
     <ul class="debutArticle">
@@ -27,11 +23,11 @@
     </div>
 </div>
 <div class="articleCoupCoeur">
-    <img src="contenu/images/banniere.png" alt="" class="banniere">
+    <img src="public/images/banniere.png" alt="" class="banniere">
     <h3 class="coupcoeur">MES AVENTURES</h3>
     <h2 class='articlesuivant'><a href="index.php">Billet simple pour l'Alaska</a>
     </h2>
-    <img src="contenu/images/banniere.png" alt="" class="banniere2">
+    <img src="public/images/banniere.png" alt="" class="banniere2">
 </div>
 
 <section class="enteteCommentaire">
@@ -40,11 +36,11 @@
 
 <?php foreach ($commentaires as $commentaire): ?>
     <div class="listeCommentaires">
-        <img class="avatar2"src="contenu/images/empty.png" alt="">
+        <img class="avatar2"src="public/images/empty.png" alt="">
         <div class="contenuMessage">
             <p class='auteur'><?=htmlspecialchars($commentaire['auteur'])?></p> <br>
             <p class='contenu'><?=htmlspecialchars($commentaire['contenu'])?></p>
-            <a class="signaler" href="<?="index.php?action=signalerCommentaire&id=" . $commentaire['id'] . "&bilid=" . $billet['id']?>">Signaler</a>
+            <a id="signaler" href="<?="index.php?action=signalerCommentaire&id=" . $commentaire['id'] . "&bilid=" . $billet['id']?>">Signaler</a>
         </div>
     </div>
 <?php endforeach;?>
@@ -73,6 +69,3 @@
         </div>
     </form>
 </div>
-
-<?php $contenu = ob_get_clean();?>
-<?php require 'Vue/gabarit.php';?>
